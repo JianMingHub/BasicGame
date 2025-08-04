@@ -2,49 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
-{
-    public float atkRate;
-    private Animator m_anim;
-    private float m_curAtkRate;
-    private bool m_isAttacked;
-
-    private void Awake()
+namespace UDEV.DefenseGameBasic
+{ 
+    public class Player : MonoBehaviour
     {
-        m_anim = GetComponent<Animator>();
-        m_curAtkRate = atkRate;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
+        public float atkRate;
+        private Animator m_anim;
+        private float m_curAtkRate;
+        private bool m_isAttacked;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0) && !m_isAttacked)
+        private void Awake()
         {
-            // Debug.Log("Player clicked");
-            if (m_anim)
-                m_anim.SetBool(Const.ATTACK_ANIM, true);
-            m_isAttacked = true;
+            m_anim = GetComponent<Animator>();
+            m_curAtkRate = atkRate;
         }
-        
-        if (m_isAttacked)
+        // Start is called before the first frame update
+        void Start()
         {
-            m_curAtkRate -= Time.deltaTime;
 
-            if (m_curAtkRate <= 0)
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetMouseButtonDown(0) && !m_isAttacked)
             {
-                m_isAttacked = false;
-                m_curAtkRate = atkRate;
+                // Debug.Log("Player clicked");
+                if (m_anim)
+                    m_anim.SetBool(Const.ATTACK_ANIM, true);
+                m_isAttacked = true;
+            }
+
+            if (m_isAttacked)
+            {
+                m_curAtkRate -= Time.deltaTime;
+
+                if (m_curAtkRate <= 0)
+                {
+                    m_isAttacked = false;
+                    m_curAtkRate = atkRate;
+                }
             }
         }
-    }
-    public void ResetAtkAnim()
-    {
-        if (m_anim)
-            m_anim.SetBool(Const.ATTACK_ANIM, false);
+        public void ResetAtkAnim()
+        {
+            if (m_anim)
+                m_anim.SetBool(Const.ATTACK_ANIM, false);
+        }
     }
 }
