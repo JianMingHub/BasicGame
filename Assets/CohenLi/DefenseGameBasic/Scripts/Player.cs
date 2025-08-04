@@ -29,16 +29,16 @@ public class Player : MonoBehaviour
             if (m_anim)
                 m_anim.SetBool(Const.ATTACK_ANIM, true);
             m_isAttacked = true;
+        }
+        
+        if (m_isAttacked)
+        {
+            m_curAtkRate -= Time.deltaTime;
 
-            if (m_isAttacked)
+            if (m_curAtkRate <= 0)
             {
-                m_curAtkRate -= Time.deltaTime;
-
-                if (m_curAtkRate <= 0)
-                {
-                    m_isAttacked = false;
-                    m_curAtkRate = atkRate;
-                }
+                m_isAttacked = false;
+                m_curAtkRate = atkRate;
             }
         }
     }
