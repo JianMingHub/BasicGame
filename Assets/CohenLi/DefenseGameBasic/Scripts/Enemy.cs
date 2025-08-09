@@ -11,12 +11,15 @@ namespace UDEV.DefenseGameBasic
         private Animator m_anim;
         private Rigidbody2D m_rb;
         private Player m_player;
+        private bool m_isDead;
+        private GameManager m_gm;
 
         private void Awake()
         {
             m_anim = GetComponent<Animator>();
             m_rb = GetComponent<Rigidbody2D>();
             m_player = FindObjectOfType<Player>();
+            m_gm = FindObjectOfType<GameManager>();
         }
 
         // Start is called before the first frame update
@@ -50,13 +53,17 @@ namespace UDEV.DefenseGameBasic
 
         public void Die()
         {
-            if (IsComponentNull()) return;
+            if (IsComponentNull() || m_isDead) return;
 
+            m_isDead = true;
             m_anim.SetTrigger(Const.DEAD_ANIM);
             m_rb.velocity = Vector2.zero; // stop moving when dead
             gameObject.layer = LayerMask.NameToLayer(Const.DEAD_ANIM); // change layer to dead layer
 
-            Debug.Log("Enemy died");
+            if (m_gm)
+                m_gm.Score++;
+            
+            Destroy(gameObject, 2f); // destroy the enemy after 2 seconds
         }
     }
 }

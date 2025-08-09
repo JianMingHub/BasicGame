@@ -66,7 +66,7 @@ namespace UDEV.DefenseGameBasic
             {
                 m_anim.SetTrigger(Const.DEAD_ANIM);
                 m_isDead = true;
-                // Debug.Log("Player is dead");
+                gameObject.layer = LayerMask.NameToLayer(Const.DEAD_LAYER); // change layer to dead layer
             }
         }
     }
