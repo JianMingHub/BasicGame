@@ -8,7 +8,7 @@ namespace UDEV.DefenseGameBasic
     {
         private void OnTriggerEnter2D(Collider2D col)
         {
-            Debug.Log("Weapon collided with: " + col.name);
+            // Debug.Log("Weapon collided with: " + col.name);
             if (col.CompareTag(Const.ENEMY_TAG))
             {
                 Enemy enemy = col.GetComponent<Enemy>();

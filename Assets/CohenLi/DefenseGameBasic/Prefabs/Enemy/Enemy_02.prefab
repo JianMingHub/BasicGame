@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5015118175420130573}
   - component: {fileID: 4680996823151152118}
   - component: {fileID: 5261794587890798508}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: EnemyWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,9 +108,10 @@ GameObject:
   - component: {fileID: 1343291122267549493}
   - component: {fileID: -7900191192471724718}
   - component: {fileID: 6083521607738838491}
-  m_Layer: 0
+  - component: {fileID: 5048910853568025240}
+  m_Layer: 7
   m_Name: Enemy_02
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,3 +277,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.7530379, y: 1.9882951}
   m_EdgeRadius: 0
+--- !u!114 &5048910853568025240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9000307504887733491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd4ddbbd66814648b48bc3b2a68deee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1.5
+  atkDistance: 1.5
