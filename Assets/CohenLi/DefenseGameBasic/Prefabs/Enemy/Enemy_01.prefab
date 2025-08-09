@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: -9039750631411581390}
   - component: {fileID: -3742582780170931435}
   - component: {fileID: 6922277274331701873}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy_01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,7 +169,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.13104081, y: -0.49630386}
+  m_Offset: {x: 0.14682364, y: -0.49630386}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -180,7 +180,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8812728, y: 1.3497187}
+  m_Size: {x: 0.8497071, y: 1.3497187}
   m_EdgeRadius: 0
 --- !u!114 &6922277274331701873
 MonoBehaviour:
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  atkDistance: 1
+  atkDistance: 1.2
 --- !u!1 &7960780824685393792
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 4518226837463691380}
   - component: {fileID: 77095268792623912}
   - component: {fileID: 3429329171636421216}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapon
   m_TagString: EnemyWeapon
   m_Icon: {fileID: 0}

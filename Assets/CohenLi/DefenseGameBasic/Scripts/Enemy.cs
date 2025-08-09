@@ -54,6 +54,7 @@ namespace UDEV.DefenseGameBasic
 
             m_anim.SetTrigger(Const.DEAD_ANIM);
             m_rb.velocity = Vector2.zero; // stop moving when dead
+            gameObject.layer = LayerMask.NameToLayer(Const.DEAD_ANIM); // change layer to dead layer
 
             Debug.Log("Enemy died");
         }
