@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IComponentCheking
+namespace UDEV.DefenseGameBasic
 {
-    bool IsComponentNull();
+    public interface IComponentCheking
+    {
+        bool IsComponentNull();
+    }
 }
+
