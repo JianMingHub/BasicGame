@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace UDEV.DefenseGameBasic
-{ 
+{
     public class Enemy : MonoBehaviour, IComponentCheking
     {
         public float speed;
@@ -35,7 +35,9 @@ namespace UDEV.DefenseGameBasic
         {
             if (IsComponentNull()) return;
 
-            if (Vector2.Distance(m_player.transform.position, transform.position) <= atkDistance)
+            float distToPlayer = Vector2.Distance(m_player.transform.position, transform.position);
+
+            if (distToPlayer <= atkDistance)
             {
                 m_anim.SetBool(Const.ATTACK_ANIM, true);
                 m_rb.velocity = Vector2.zero;       // stop moving when attacking
@@ -44,6 +46,16 @@ namespace UDEV.DefenseGameBasic
             {
                 m_rb.velocity = new Vector2(-speed, m_rb.velocity.y); // move towards the player
             }
+        }
+
+        public void Die()
+        {
+            if (IsComponentNull()) return;
+
+            m_anim.SetTrigger(Const.DEAD_ANIM);
+            m_rb.velocity = Vector2.zero; // stop moving when dead
+
+            Debug.Log("Enemy died");
         }
     }
 }
