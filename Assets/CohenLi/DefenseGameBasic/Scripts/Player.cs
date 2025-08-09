@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace UDEV.DefenseGameBasic
-{ 
-    public class Player : MonoBehaviour
+{
+    public class Player : MonoBehaviour, IComponentCheking
     {
         public float atkRate;
         private Animator m_anim;
         private float m_curAtkRate;
         private bool m_isAttacked;
-
+        private bool m_isDead;
         private void Awake()
         {
             m_anim = GetComponent<Animator>();
@@ -22,14 +22,21 @@ namespace UDEV.DefenseGameBasic
 
         }
 
+        public bool IsComponentNull()
+        {
+            return m_anim == null;
+        }
+
         // Update is called once per frame
         void Update()
         {
+            if (IsComponentNull()) return;
+
             if (Input.GetMouseButtonDown(0) && !m_isAttacked)
             {
                 // Debug.Log("Player clicked");
-                if (m_anim)
-                    m_anim.SetBool(Const.ATTACK_ANIM, true);
+
+                m_anim.SetBool(Const.ATTACK_ANIM, true);
                 m_isAttacked = true;
             }
 
@@ -46,8 +53,21 @@ namespace UDEV.DefenseGameBasic
         }
         public void ResetAtkAnim()
         {
-            if (m_anim)
-                m_anim.SetBool(Const.ATTACK_ANIM, false);
+            if (IsComponentNull()) return;
+
+            m_anim.SetBool(Const.ATTACK_ANIM, false);
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (IsComponentNull()) return;
+
+            if (col.CompareTag(Const.ENEMY_WEAPON_TAG) && !m_isDead)
+            {
+                m_anim.SetTrigger(Const.DEAD_ANIM);
+                m_isDead = true;
+                // Debug.Log("Player is dead");
+            }
         }
     }
 }

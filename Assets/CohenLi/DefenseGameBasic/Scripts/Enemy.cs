@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UDEV.DefenseGameBasic
 { 
-    public class Enemy : MonoBehaviour
+    public class Enemy : MonoBehaviour, IComponentCheking
     {
         public float speed;
         public float atkDistance;
@@ -25,14 +25,15 @@ namespace UDEV.DefenseGameBasic
 
         }
 
+        public bool IsComponentNull()
+        {
+            return m_anim == null || m_rb == null || m_player == null;
+        }
+
         // Update is called once per frame
         void Update()
         {
-            if (m_rb == null || m_player == null)
-            {
-                Debug.LogError("Enemy requires a Rigidbody2D and Player component to function properly.");
-                return;
-            }
+            if (IsComponentNull()) return;
 
             if (Vector2.Distance(m_player.transform.position, transform.position) <= atkDistance)
             {
@@ -41,7 +42,7 @@ namespace UDEV.DefenseGameBasic
             }
             else
             {
-                m_rb.velocity = new Vector2(-speed, m_rb.velocity.y);
+                m_rb.velocity = new Vector2(-speed, m_rb.velocity.y); // move towards the player
             }
         }
     }

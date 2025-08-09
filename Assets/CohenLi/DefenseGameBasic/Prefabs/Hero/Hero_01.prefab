@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1441988769653175374}
   - component: {fileID: 7151918789619420193}
   - component: {fileID: 7069420450859337294}
+  - component: {fileID: 9159577525655802236}
   m_Layer: 0
   m_Name: Hero_01
   m_TagString: Untagged
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e5f4c9351cdd2b54a8953af353fc9270, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 4.51, y: 4.51}
@@ -168,7 +169,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.057457447, y: -0.79005814}
+  m_Offset: {x: -0.05745745, y: -0.7900581}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -179,8 +180,21 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0352993, y: 1.9434447}
+  m_Size: {x: 1.035299, y: 1.943445}
   m_EdgeRadius: 0
+--- !u!114 &9159577525655802236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5666764523598555940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0428f6a08965a4c92881f21a17f902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atkRate: 1
 --- !u!1 &7931333631033833698
 GameObject:
   m_ObjectHideFlags: 0

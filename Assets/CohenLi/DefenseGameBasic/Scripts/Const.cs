@@ -8,6 +8,7 @@ namespace UDEV.DefenseGameBasic
     {
         public const string PLAYER_TAG = "Player";
         public const string ENEMY_TAG = "Enemy";
+        public const string ENEMY_WEAPON_TAG = "EnemyWeapon";
         public const string ATTACK_ANIM = "Attacking";
         public const string DEAD_ANIM = "Dead";
         public const string DEAD_LAYER = "Dead";
