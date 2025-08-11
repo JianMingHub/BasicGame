@@ -67,8 +67,6 @@ namespace UDEV.DefenseGameBasic
             int coinBonus = Random.Range(minCoinBonus, maxCoinBonus);
             Pref.coins += coinBonus;
 
-            Debug.Log($"Coin Bonus: {coinBonus}");
-            
             Destroy(gameObject, 2f); // destroy the enemy after 2 seconds
         }
     }
