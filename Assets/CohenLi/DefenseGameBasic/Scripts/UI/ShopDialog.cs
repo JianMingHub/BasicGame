@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UDEV.DefenseGameBasic
 {
-    public class ShopDialog : MonoBehaviour
+    public class ShopDialog : Dialog
     {
         
     }

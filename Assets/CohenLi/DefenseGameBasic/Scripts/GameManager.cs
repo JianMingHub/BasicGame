@@ -5,21 +5,37 @@ using UnityEngine;
 
 namespace UDEV.DefenseGameBasic
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoBehaviour, IComponentCheking
     {
         public float spawnTime;
         public Enemy[] enemyPrefabs;
+        public GUIManager guiMng;
         private bool m_isGameOver;
         private int m_score;
 
         public int Score { get => m_score; set => m_score = value; }
 
-    // Start is called before the first frame update
-    void Start()
+        // Start is called before the first frame update
+        void Start()
         {
-            StartCoroutine(SpawnEnemies());
+            if (IsComponentNull()) return;
+
+            guiMng.ShowGameGUI(false);
+            guiMng.UpdateMainCoins();
         }
 
+        public void PlayGame()
+        {
+            StartCoroutine(SpawnEnemies());
+
+            guiMng.ShowGameGUI(true);
+            guiMng.UpdateGameplayCoins();
+        }
+
+        public bool IsComponentNull()
+        {
+            return guiMng == null;
+        }
         // Update is called once per frame
         void Update()
         {

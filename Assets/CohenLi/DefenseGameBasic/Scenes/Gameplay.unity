@@ -1811,6 +1811,7 @@ MonoBehaviour:
   - {fileID: 6922277274331701873, guid: fdb4dfa30c8e2ab4db9fe6e69f9fc04c, type: 3}
   - {fileID: 5048910853568025240, guid: 246a1b6269662b044b94621704375a6d, type: 3}
   - {fileID: 549772872957924599, guid: c55173d5970c860448238d782423eea8, type: 3}
+  guiMng: {fileID: 1541673140}
 --- !u!4 &564440813
 Transform:
   m_ObjectHideFlags: 0
@@ -5122,7 +5123,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1417603758}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 564440812}
+        m_TargetAssemblyTypeName: UDEV.DefenseGameBasic.GameManager, Assembly-CSharp
+        m_MethodName: PlayGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1417603758
 MonoBehaviour:
   m_ObjectHideFlags: 0
