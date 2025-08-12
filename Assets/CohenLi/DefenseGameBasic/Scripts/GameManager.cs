@@ -36,10 +36,17 @@ namespace UDEV.DefenseGameBasic
         {
             return guiMng == null;
         }
-        // Update is called once per frame
-        void Update()
-        {
 
+        public void GameOver()
+        {
+            if (m_isGameOver) return;
+
+            m_isGameOver = true;
+
+            Pref.bestScore = m_score;
+
+            if (guiMng.gameOverDialog)
+                guiMng.gameOverDialog.Show(true);
         }
         
         IEnumerator SpawnEnemies()

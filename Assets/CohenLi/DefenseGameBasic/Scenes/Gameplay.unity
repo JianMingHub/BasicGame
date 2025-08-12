@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 111267770}
   - component: {fileID: 111267772}
   - component: {fileID: 111267771}
+  - component: {fileID: 111267773}
   m_Layer: 5
   m_Name: GameOverDialog
   m_TagString: Untagged
@@ -382,6 +383,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111267769}
   m_CullTransparentMesh: 1
+--- !u!114 &111267773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111267769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40127524659579644bf8e6a76b265c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleText: {fileID: 0}
+  contentText: {fileID: 0}
+  bestSocreTxt: {fileID: 1593104047}
 --- !u!1 &190685470
 GameObject:
   m_ObjectHideFlags: 0
@@ -2345,7 +2361,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 755643562}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 111267773}
+        m_TargetAssemblyTypeName: UDEV.DefenseGameBasic.GameoverDialog, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &755643562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5372,7 +5400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   homeGUI: {fileID: 604970162}
   gameGUI: {fileID: 820546659}
-  gameOverDialog: {fileID: 0}
+  gameOverDialog: {fileID: 111267773}
   mainCoinTxt: {fileID: 948580643}
   gameplayCoinTxt: {fileID: 341183515}
 --- !u!4 &1541673141
@@ -6128,7 +6156,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1804667924}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 111267773}
+        m_TargetAssemblyTypeName: UDEV.DefenseGameBasic.GameoverDialog, Assembly-CSharp
+        m_MethodName: Replay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1804667924
 MonoBehaviour:
   m_ObjectHideFlags: 0
