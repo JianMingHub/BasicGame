@@ -10,6 +10,8 @@ namespace UDEV.DefenseGameBasic
         public float spawnTime;
         public Enemy[] enemyPrefabs;
         public GUIManager guiMng;
+        public ShopManager shopMng;
+        private Player m_curPlayer;
         private bool m_isGameOver;
         private int m_score;
 
@@ -24,17 +26,36 @@ namespace UDEV.DefenseGameBasic
             guiMng.UpdateMainCoins();
         }
 
+        public bool IsComponentNull()
+        {
+            return guiMng == null || shopMng == null;
+        }
+
         public void PlayGame()
         {
+            ActivePlayer();
+
             StartCoroutine(SpawnEnemies());
 
             guiMng.ShowGameGUI(true);
             guiMng.UpdateGameplayCoins();
         }
 
-        public bool IsComponentNull()
+        public void ActivePlayer()
         {
-            return guiMng == null;
+            if (IsComponentNull()) return;
+
+            if (m_curPlayer)
+                Destroy(m_curPlayer.gameObject);
+
+            var shopItems = shopMng.items;
+
+            if (shopItems == null || shopItems.Length <= 0) return;
+
+            var newPlayerPb = shopItems[Pref.curPlayerId].playerPrefab;
+
+            if (newPlayerPb)
+                m_curPlayer = Instantiate(newPlayerPb, new Vector3(-7f, -1f, 0f), Quaternion.identity);
         }
 
         public void GameOver()
