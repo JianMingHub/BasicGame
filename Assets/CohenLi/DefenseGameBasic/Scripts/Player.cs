@@ -60,7 +60,11 @@ namespace UDEV.DefenseGameBasic
 
             m_anim.SetBool(Const.ATTACK_ANIM, false);
         }
-
+        public void PlayAtkSound()
+        {
+            if (m_gm.auCtr)
+                m_gm.auCtr.PlaySound(m_gm.auCtr.playerAtk);
+        }
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (IsComponentNull()) return;
