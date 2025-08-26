@@ -7,17 +7,29 @@ namespace UDEV.DefenseGameBasic
 {
     public class GUIManager : MonoBehaviour
     {
+        public static GUIManager Ins;
         public GameObject homeGUI;
         public GameObject gameGUI;
         public Dialog gameOverDialog;
         public Text mainCoinTxt;
         public Text gameplayCoinTxt;
 
-        void Start()
+        public void Awake()
         {
-
+            MakeSingleton();
         }
-
+        private void MakeSingleton()
+        {
+            if (Ins == null)
+            {
+                Ins = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
         public void ShowGameGUI(bool isShow)
         {
             if (gameGUI)
@@ -25,13 +37,11 @@ namespace UDEV.DefenseGameBasic
             if (homeGUI)
                 homeGUI.SetActive(!isShow);
         }
-
         public void UpdateMainCoins()
         {
             if (mainCoinTxt)
                 mainCoinTxt.text = Pref.coins.ToString();
         }
-
         public void UpdateGameplayCoins()
         {
             if (gameplayCoinTxt)

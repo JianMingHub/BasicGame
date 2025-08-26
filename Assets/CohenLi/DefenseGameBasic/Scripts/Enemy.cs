@@ -15,14 +15,13 @@ namespace UDEV.DefenseGameBasic
         private Rigidbody2D m_rb;
         private Player m_player;
         private bool m_isDead;
-        private GameManager m_gm;
+        // private GameManager m_gm;
 
         private void Awake()
         {
             m_anim = GetComponent<Animator>();
             m_rb = GetComponent<Rigidbody2D>();
             m_player = FindObjectOfType<Player>();
-            m_gm = FindObjectOfType<GameManager>();
         }
 
         // Start is called before the first frame update
@@ -33,7 +32,7 @@ namespace UDEV.DefenseGameBasic
 
         public bool IsComponentNull()
         {
-            return m_anim == null || m_rb == null || m_player == null || m_gm == null;
+            return m_anim == null || m_rb == null || m_player == null || GameManager.Ins == null;
         }
 
         // Update is called once per frame
@@ -63,16 +62,13 @@ namespace UDEV.DefenseGameBasic
             m_rb.velocity = Vector2.zero; // stop moving when dead
             gameObject.layer = LayerMask.NameToLayer(Const.DEAD_ANIM); // change layer to dead layer
 
-            m_gm.Score++;
+            GameManager.Ins.Score++;
             int coinBonus = Random.Range(minCoinBonus, maxCoinBonus);
             
             Pref.coins += coinBonus;
 
-            if (m_gm.guiMng)
-                m_gm.guiMng.UpdateGameplayCoins();
-
-            if (m_gm.auCtr)
-                m_gm.auCtr.PlaySound(m_gm.auCtr.enemyDead);
+            GUIManager.Ins.UpdateGameplayCoins();
+            AudioController.Ins.PlaySound(AudioController.Ins.enemyDead);
 
             Destroy(gameObject, 2f); // destroy the enemy after 2 seconds
         }

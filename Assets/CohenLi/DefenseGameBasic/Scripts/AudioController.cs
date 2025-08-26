@@ -6,6 +6,8 @@ namespace UDEV.DefenseGameBasic
 {
     public class AudioController : MonoBehaviour
     {
+        public static AudioController Ins;
+
         [Header("Main Setting:")]
         [Range(0f, 1f)]
         public float musicVol = 0.3f;
@@ -21,6 +23,22 @@ namespace UDEV.DefenseGameBasic
         public AudioClip gameOver;
         public AudioClip[] bgms;
 
+        public void Awake()
+        {
+            MakeSingleton();
+        }
+        private void MakeSingleton()
+        {
+            if (Ins == null)
+            {
+                Ins = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
         private void Start()
         {
             if (musicAus == null || soundAus == null) return;
@@ -30,8 +48,6 @@ namespace UDEV.DefenseGameBasic
             musicAus.volume = musicVol;
             soundAus.volume = soundVol;
         }
-
-
         public void PlaySound(AudioClip[] sounds, AudioSource aus = null)
         {
             if (!aus)

@@ -11,32 +11,25 @@ namespace UDEV.DefenseGameBasic
     {
         public Transform gridRoot;
         public ShopItemUI itemUIPrefab;
-        private ShopManager m_shopMng;
-        private GameManager m_gm;
 
         public override void Show(bool isShow)
         {
             Pref.coins = 10000;
             base.Show(isShow);
 
-            m_shopMng = FindObjectOfType<ShopManager>();
-            m_gm = FindObjectOfType<GameManager>();
-
             UpdateUI();
         }
-
         public bool IsComponentNull()
         {
-            return m_shopMng == null || m_gm == null || gridRoot == null;
+            return ShopManager.Ins == null || GameManager.Ins == null || gridRoot == null;
         }
-
         private void UpdateUI()
         {
             if (IsComponentNull()) return;
 
             ClearChilds();
 
-            var items = m_shopMng.items;
+            var items = ShopManager.Ins.items;
 
             if (items == null || items.Length <= 0) return;
 
@@ -63,7 +56,6 @@ namespace UDEV.DefenseGameBasic
                 }
             }
         }
-
         private void ItemEvent(ShopItem item, int itemIdx)
         {
             if (item == null) return;
@@ -76,7 +68,7 @@ namespace UDEV.DefenseGameBasic
 
                 Pref.curPlayerId = itemIdx;
 
-                m_gm.ActivePlayer();
+                GameManager.Ins.ActivePlayer();
 
                 UpdateUI();
             }
@@ -86,19 +78,17 @@ namespace UDEV.DefenseGameBasic
                 Pref.SetBool(Const.PLAYER_PREFIX_PREF + itemIdx, true);
                 Pref.curPlayerId = itemIdx;
 
-                m_gm.ActivePlayer();
+                GameManager.Ins.ActivePlayer();
 
                 UpdateUI();
 
-                if (m_gm.guiMng)
-                    m_gm.guiMng.UpdateMainCoins();
+                GUIManager.Ins.UpdateMainCoins();
             }
             else
             {
                 Debug.Log("you don't have enought money");
             }
         }
-
         public void ClearChilds()
         {
             if (gridRoot == null || gridRoot.childCount <= 0) return;
