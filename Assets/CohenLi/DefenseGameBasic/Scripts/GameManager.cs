@@ -20,6 +20,7 @@ namespace UDEV.DefenseGameBasic
         public void Awake()
         {
             MakeSingleton();
+            // Ins = this;
         }
         private void MakeSingleton()
         {

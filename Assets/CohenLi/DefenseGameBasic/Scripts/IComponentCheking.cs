@@ -9,4 +9,3 @@ namespace UDEV.DefenseGameBasic
         bool IsComponentNull();
     }
 }
-
